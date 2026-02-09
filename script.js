@@ -503,3 +503,38 @@ console.log('Para usar funcionalidades reales, conectar con backend');
  * - Agregar más validaciones
  * - Mejorar seguridad (CSRF, HTTPS, etc.)
  */
+/**
+ * MÓDULO DE TARJETA DE CRÉDITO 3D
+ * =====================================================
+ * Maneja el efecto de flip 3D de la tarjeta de crédito
+ */
+
+/**
+ * Inicializa el simulador de tarjeta de crédito
+ * Agrega event listener para voltear la tarjeta al hacer clic
+ * 
+ * @function initCardSimulator
+ * @returns {void}
+ */
+function initCardSimulator() {
+    const cardFlipper = document.querySelector('.card-flipper');
+    
+    if (cardFlipper) {
+        cardFlipper.addEventListener('click', function() {
+            this.classList.toggle('flipped');
+        });
+
+        // También permite hacer clic en el contenedor
+        cardFlipper.addEventListener('touchstart', function(e) {
+            // Para dispositivos táctiles
+            if (e.touches.length === 1) {
+                this.classList.toggle('flipped');
+            }
+        });
+    }
+}
+
+// Inicializar tarjeta al cargar la página
+document.addEventListener('DOMContentLoaded', function() {
+    initCardSimulator();
+});
