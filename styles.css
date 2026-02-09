@@ -1,0 +1,729 @@
+/**
+ * =====================================================
+ * BANCO MOBILE DEMO - ESTILOS PRINCIPALES
+ * =====================================================
+ * 
+ * Archivo: styles.css
+ * Descripción: Hoja de estilos completa para la aplicación bancaria móvil.
+ *              Incluye diseño responsivo, componentes reutilizables y animaciones.
+ * 
+ * TABLA DE CONTENIDOS:
+ * 1. ESTILOS GENERALES - Reset CSS y variables globales
+ * 2. BARRA DE NAVEGACIÓN - Navbar sticky con gradiente
+ * 3. HEADER - Sección de bienvenida con información del usuario
+ * 4. SECCIONES - Contenedores generales de contenido
+ * 5. TARJETAS DE CUENTAS - Grid de cuentas bancarias con gradientes
+ * 6. FORMULARIOS - Estilos para inputs, selects y textareas
+ * 7. BOTONES - Variantes de botones (primary, secondary)
+ * 8. TABLA DE TRANSACCIONES - Tabla responsiva de movimientos
+ * 9. PERFIL - Sección de perfil de usuario con avatar
+ * 10. ACCIONES RÁPIDAS - Grid de tarjetas de acciones
+ * 11. FOOTER - Pie de página con múltiples secciones
+ * 12. RESPONSIVE DESIGN - Media queries para tablets y móviles
+ * 13. ANIMACIONES - Keyframes y transiciones
+ * 
+ * VARIABLES GLOBALES (CSS Custom Properties):
+ * --primary-color: Azul principal (#2563eb)
+ * --primary-dark: Azul oscuro para hover (#1e40af)
+ * --secondary-color: Verde para acciones positivas (#10b981)
+ * --danger-color: Rojo para alertas/débitos (#ef4444)
+ * --warning-color: Naranja para advertencias (#f59e0b)
+ * --light-bg: Gris claro para fondos (#f3f4f6)
+ * --white: Blanco puro (#ffffff)
+ * --text-dark: Texto principal (#1f2937)
+ * --text-light: Texto secundario (#6b7280)
+ * --border-color: Color de bordes (#e5e7eb)
+ * --shadow: Sombra pequeña (4px 6px)
+ * --shadow-lg: Sombra grande (10px 25px)
+ * 
+ * BREAKPOINTS RESPONSIVOS:
+ * Tablet: 768px (ajusta layout a una columna)
+ * Móvil: 480px (ajusta componentes para pantallas pequeñas)
+ * 
+ * CARACTERÍSTICAS PRINCIPALES:
+ * - Diseño mobile-first y responsive
+ * - Gradientes lineales en tarjetas y navbar
+ * - Transiciones suaves en interacciones
+ * - Sombras para profundidad visual
+ * - Animaciones de entrada (slideIn)
+ * - Pulso en hover de acciones
+ * - Accesibilidad mejorada con focus estados
+ * - Colores codificados por tipo (débito/crédito)
+ * - Grid layouts flexibles con auto-fit
+ * 
+ * =====================================================
+ */
+/* =====================================================
+   ESTILOS GENERALES
+===================================================== */
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+:root {
+    --primary-color: #2563eb;
+    --primary-dark: #1e40af;
+    --secondary-color: #10b981;
+    --danger-color: #ef4444;
+    --warning-color: #f59e0b;
+    --light-bg: #f3f4f6;
+    --white: #ffffff;
+    --text-dark: #1f2937;
+    --text-light: #6b7280;
+    --border-color: #e5e7eb;
+    --shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    --shadow-lg: 0 10px 25px rgba(0, 0, 0, 0.15);
+}
+
+body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    background-color: var(--light-bg);
+    color: var(--text-dark);
+    line-height: 1.6;
+}
+
+.container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 20px;
+}
+
+/* =====================================================
+   BARRA DE NAVEGACIÓN
+===================================================== */
+
+.navbar {
+    background: linear-gradient(135deg, var(--primary-color) 0%, var(--primary-dark) 100%);
+    padding: 1rem 0;
+    box-shadow: var(--shadow);
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+}
+
+.navbar-content {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.logo h1 {
+    color: var(--white);
+    font-size: 1.8rem;
+    font-weight: 700;
+}
+
+.nav-links {
+    display: flex;
+    list-style: none;
+    gap: 2rem;
+    align-items: center;
+}
+
+.nav-links a {
+    color: var(--white);
+    text-decoration: none;
+    font-weight: 500;
+    transition: all 0.3s ease;
+    padding: 0.5rem 0;
+    border-bottom: 2px solid transparent;
+}
+
+.nav-links a:hover {
+    border-bottom-color: var(--white);
+    opacity: 0.8;
+}
+
+.logout-btn {
+    background-color: rgba(255, 255, 255, 0.2);
+    padding: 0.5rem 1rem;
+    border-radius: 4px;
+}
+
+.logout-btn:hover {
+    background-color: rgba(255, 255, 255, 0.3);
+    border: none;
+}
+
+/* =====================================================
+   HEADER
+===================================================== */
+
+.header {
+    background-color: var(--white);
+    padding: 2rem 0;
+    border-bottom: 1px solid var(--border-color);
+    box-shadow: var(--shadow);
+}
+
+.user-info h2 {
+    font-size: 1.8rem;
+    color: var(--text-dark);
+    margin-bottom: 0.5rem;
+}
+
+.date-time {
+    color: var(--text-light);
+    font-size: 0.95rem;
+}
+
+/* =====================================================
+   SECCIONES
+===================================================== */
+
+.section {
+    background-color: var(--white);
+    margin: 2rem 0;
+    padding: 2rem;
+    border-radius: 8px;
+    box-shadow: var(--shadow);
+}
+
+.section h2 {
+    font-size: 1.6rem;
+    margin-bottom: 1.5rem;
+    color: var(--text-dark);
+    border-bottom: 3px solid var(--primary-color);
+    padding-bottom: 0.5rem;
+    display: inline-block;
+}
+
+/* =====================================================
+   TARJETAS DE CUENTAS
+===================================================== */
+
+.accounts-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 1.5rem;
+    margin-top: 1.5rem;
+}
+
+.account-card {
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    color: var(--white);
+    padding: 1.5rem;
+    border-radius: 12px;
+    box-shadow: var(--shadow-lg);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.account-card:hover {
+    transform: translateY(-5px);
+    box-shadow: var(--shadow-lg);
+}
+
+.account-card:nth-child(2) {
+    background: linear-gradient(135deg, #10b981 0%, #059669 100%);
+}
+
+.account-card:nth-child(3) {
+    background: linear-gradient(135deg, #f59e0b 0%, #d97706 100%);
+}
+
+.account-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 1.5rem;
+}
+
+.account-header h3 {
+    font-size: 1.3rem;
+    font-weight: 600;
+}
+
+.account-type {
+    background-color: rgba(255, 255, 255, 0.3);
+    padding: 0.3rem 0.8rem;
+    border-radius: 20px;
+    font-size: 0.8rem;
+    font-weight: 600;
+}
+
+.account-balance {
+    margin-bottom: 1.5rem;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.2);
+    padding-bottom: 1rem;
+}
+
+.account-balance .label {
+    font-size: 0.9rem;
+    opacity: 0.9;
+    margin-bottom: 0.3rem;
+}
+
+.account-balance .amount {
+    font-size: 1.8rem;
+    font-weight: 700;
+    margin: 0;
+}
+
+.account-details {
+    font-size: 0.9rem;
+    line-height: 1.6;
+    margin-bottom: 1rem;
+    opacity: 0.95;
+}
+
+.account-details p {
+    margin: 0.3rem 0;
+}
+
+/* =====================================================
+   FORMULARIOS
+===================================================== */
+
+.form-container {
+    max-width: 600px;
+    margin: 2rem 0;
+}
+
+.transfer-form {
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+}
+
+.form-group {
+    display: flex;
+    flex-direction: column;
+}
+
+.form-group label {
+    margin-bottom: 0.5rem;
+    font-weight: 600;
+    color: var(--text-dark);
+}
+
+.form-group input,
+.form-group select,
+.form-group textarea {
+    padding: 0.75rem;
+    border: 1px solid var(--border-color);
+    border-radius: 6px;
+    font-size: 1rem;
+    font-family: inherit;
+    transition: border-color 0.3s ease, box-shadow 0.3s ease;
+}
+
+.form-group input:focus,
+.form-group select:focus,
+.form-group textarea:focus {
+    outline: none;
+    border-color: var(--primary-color);
+    box-shadow: 0 0 0 3px rgba(37, 99, 235, 0.1);
+}
+
+/* =====================================================
+   BOTONES
+===================================================== */
+
+.btn {
+    padding: 0.75rem 1.5rem;
+    border: none;
+    border-radius: 6px;
+    font-size: 1rem;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    text-decoration: none;
+    display: inline-block;
+}
+
+.btn-primary {
+    background-color: var(--primary-color);
+    color: var(--white);
+}
+
+.btn-primary:hover {
+    background-color: var(--primary-dark);
+    transform: translateY(-2px);
+    box-shadow: var(--shadow);
+}
+
+.btn-secondary {
+    background-color: var(--light-bg);
+    color: var(--text-dark);
+    border: 1px solid var(--border-color);
+}
+
+.btn-secondary:hover {
+    background-color: var(--border-color);
+    border-color: var(--text-light);
+}
+
+/* =====================================================
+   TABLA DE TRANSACCIONES
+===================================================== */
+
+.table-responsive {
+    overflow-x: auto;
+    margin-top: 1.5rem;
+}
+
+.transaction-table {
+    width: 100%;
+    border-collapse: collapse;
+}
+
+.transaction-table thead {
+    background-color: var(--light-bg);
+}
+
+.transaction-table th {
+    padding: 1rem;
+    text-align: left;
+    font-weight: 600;
+    border-bottom: 2px solid var(--border-color);
+}
+
+.transaction-table td {
+    padding: 1rem;
+    border-bottom: 1px solid var(--border-color);
+}
+
+.transaction-table tbody tr:hover {
+    background-color: var(--light-bg);
+}
+
+.transaction-debit {
+    border-left: 4px solid var(--danger-color);
+}
+
+.transaction-credit {
+    border-left: 4px solid var(--secondary-color);
+}
+
+.badge {
+    display: inline-block;
+    padding: 0.25rem 0.75rem;
+    border-radius: 12px;
+    font-size: 0.85rem;
+    font-weight: 600;
+}
+
+.badge-debit {
+    background-color: rgba(239, 68, 68, 0.2);
+    color: var(--danger-color);
+}
+
+.badge-credit {
+    background-color: rgba(16, 185, 129, 0.2);
+    color: var(--secondary-color);
+}
+
+/* =====================================================
+   PERFIL
+===================================================== */
+
+.profile-container {
+    margin-top: 2rem;
+}
+
+.profile-header {
+    display: flex;
+    align-items: center;
+    gap: 2rem;
+    margin-bottom: 3rem;
+    padding-bottom: 2rem;
+    border-bottom: 1px solid var(--border-color);
+}
+
+.profile-avatar {
+    width: 100px;
+    height: 100px;
+    background: linear-gradient(135deg, var(--primary-color), var(--primary-dark));
+    color: var(--white);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 2.5rem;
+    font-weight: 700;
+}
+
+.profile-details h3 {
+    font-size: 1.5rem;
+    margin-bottom: 0.3rem;
+}
+
+.profile-email {
+    color: var(--text-light);
+}
+
+.profile-data {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 2rem;
+}
+
+.data-group h4 {
+    font-size: 1.1rem;
+    margin-bottom: 1rem;
+    color: var(--primary-color);
+}
+
+.data-group p {
+    margin-bottom: 0.5rem;
+    color: var(--text-dark);
+}
+
+.data-group .btn {
+    margin-top: 0.5rem;
+    margin-right: 0.5rem;
+}
+
+/* =====================================================
+   ACCIONES RÁPIDAS
+===================================================== */
+
+.actions-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 1.5rem;
+    margin-top: 1.5rem;
+}
+
+.action-card {
+    text-align: center;
+    padding: 2rem;
+    border: 2px solid var(--border-color);
+    border-radius: 8px;
+    transition: all 0.3s ease;
+    cursor: pointer;
+}
+
+.action-card:hover {
+    border-color: var(--primary-color);
+    box-shadow: var(--shadow);
+    transform: translateY(-3px);
+}
+
+.action-icon {
+    font-size: 2.5rem;
+    display: block;
+    margin-bottom: 1rem;
+}
+
+.action-card h3 {
+    font-size: 1.1rem;
+    margin-bottom: 0.5rem;
+}
+
+.action-card p {
+    color: var(--text-light);
+    font-size: 0.9rem;
+}
+
+/* =====================================================
+   FOOTER
+===================================================== */
+
+.footer {
+    background-color: #1f2937;
+    color: var(--white);
+    margin-top: 3rem;
+    padding: 3rem 0 1rem;
+}
+
+.footer-content {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 2rem;
+    margin-bottom: 2rem;
+}
+
+.footer-section h4 {
+    font-size: 1.1rem;
+    margin-bottom: 1rem;
+    color: var(--primary-color);
+}
+
+.footer-section p {
+    color: #d1d5db;
+    line-height: 1.8;
+}
+
+.footer-section ul {
+    list-style: none;
+}
+
+.footer-section ul li {
+    margin-bottom: 0.5rem;
+}
+
+.footer-section ul li a {
+    color: #d1d5db;
+    text-decoration: none;
+    transition: color 0.3s ease;
+}
+
+.footer-section ul li a:hover {
+    color: var(--primary-color);
+}
+
+.footer-bottom {
+    border-top: 1px solid #374151;
+    padding-top: 1.5rem;
+    text-align: center;
+    color: #9ca3af;
+}
+
+/* =====================================================
+   RESPONSIVE DESIGN
+===================================================== */
+
+@media (max-width: 768px) {
+    .navbar-content {
+        flex-direction: column;
+        gap: 1rem;
+    }
+
+    .nav-links {
+        gap: 1rem;
+        font-size: 0.9rem;
+    }
+
+    .logo h1 {
+        font-size: 1.4rem;
+    }
+
+    .user-info h2 {
+        font-size: 1.4rem;
+    }
+
+    .accounts-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .section {
+        padding: 1.5rem;
+    }
+
+    .section h2 {
+        font-size: 1.3rem;
+    }
+
+    .profile-header {
+        flex-direction: column;
+        text-align: center;
+    }
+
+    .profile-data {
+        grid-template-columns: 1fr;
+    }
+
+    .data-group .btn {
+        display: block;
+        width: 100%;
+        margin: 0.5rem 0;
+    }
+
+    .account-card {
+        padding: 1.2rem;
+    }
+
+    .account-balance .amount {
+        font-size: 1.5rem;
+    }
+
+    .transaction-table {
+        font-size: 0.9rem;
+    }
+
+    .transaction-table th,
+    .transaction-table td {
+        padding: 0.7rem;
+    }
+}
+
+@media (max-width: 480px) {
+    .navbar {
+        padding: 0.8rem 0;
+    }
+
+    .nav-links {
+        flex-direction: column;
+        gap: 0.5rem;
+    }
+
+    .nav-links a {
+        display: block;
+        padding: 0.5rem;
+    }
+
+    .logo h1 {
+        font-size: 1.2rem;
+    }
+
+    .user-info h2 {
+        font-size: 1.2rem;
+    }
+
+    .actions-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .account-header {
+        flex-direction: column;
+        align-items: flex-start;
+    }
+
+    .account-type {
+        margin-top: 0.5rem;
+    }
+
+    .form-group input,
+    .form-group select,
+    .form-group textarea {
+        padding: 0.6rem;
+        font-size: 16px;
+    }
+
+    .btn {
+        padding: 0.6rem 1rem;
+        font-size: 0.9rem;
+        width: 100%;
+        margin-bottom: 0.5rem;
+    }
+
+    .transfer-form {
+        gap: 1rem;
+    }
+}
+
+/* =====================================================
+   ANIMACIONES
+===================================================== */
+
+@keyframes slideIn {
+    from {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.section {
+    animation: slideIn 0.5s ease;
+}
+
+@keyframes pulse {
+    0%, 100% {
+        opacity: 1;
+    }
+    50% {
+        opacity: 0.7;
+    }
+}
+
+.action-card:hover {
+    animation: pulse 0.3s ease;
+}

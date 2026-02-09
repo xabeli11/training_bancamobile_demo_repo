@@ -1,0 +1,321 @@
+<!-- 
+
+DESCRIPCIÓN:
+Página principal de BancaMobile, una aplicación web de banca digital responsiva en español.
+Proporciona una interfaz completa para que los usuarios gestionen sus cuentas bancarias, realicen transferencias,
+visualicen historial de transacciones y administren su perfil.
+
+SECCIONES PRINCIPALES:
+1. NAVEGACIÓN (navbar): Menú principal con logo y enlaces a diferentes secciones
+2. HEADER: Área de bienvenida con nombre del usuario y fecha/hora actual
+3. MAIN CONTENT:
+    - Mis Cuentas: Tarjetas informativas de cuentas corriente, ahorros y tarjeta de crédito
+    - Transferencias: Formulario para realizar transferencias bancarias
+    - Historial: Tabla con transacciones recientes (débitos y créditos)
+    - Perfil: Información personal, bancaria y opciones de seguridad del usuario
+    - Acciones Rápidas: Enlaces a funcionalidades adicionales (app, soporte, presupuesto, promociones)
+4. FOOTER: Pie de página con información de contacto y enlaces legales
+
+CARACTERÍSTICAS:
+- Diseño responsivo con contenedor flexible
+- Información de usuario: Juan Pérez García
+- Múltiples cuentas con saldos e información detallada
+- Formulario de transferencias con validación de campos
+- Tabla de transacciones con clasificación visual (crédito/débito)
+- Sección de perfil con datos personales, bancarios y seguridad
+- Integración con estilos externos (styles.css) y scripts (script.js)
+- Estructura semántica HTML5 con etiquetas form, table, section
+
+DEPENDENCIAS:
+- styles.css: Estilos CSS personalizados
+- script.js: Funcionalidad JavaScript (fecha/hora, interactividad)
+-->
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>BancaMobile - Banca Digital</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <!-- Navegación -->
+    <nav class="navbar">
+        <div class="container navbar-content">
+            <div class="logo">
+                <h1>💳 BancaMobile</h1>
+            </div>
+            <ul class="nav-links">
+                <li><a href="#home">Inicio</a></li>
+                <li><a href="#accounts">Mis Cuentas</a></li>
+                <li><a href="#transfers">Transferencias</a></li>
+                <li><a href="#history">Historial</a></li>
+                <li><a href="#profile">Perfil</a></li>
+                <li><a href="#logout" class="logout-btn">Salir</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <!-- Header con usuario -->
+    <header class="header">
+        <div class="container">
+            <div class="user-info">
+                <h2>Bienvenido, Juan Pérez</h2>
+                <p class="date-time" id="dateTime"></p>
+            </div>
+        </div>
+    </header>
+
+    <!-- Contenido Principal -->
+    <main class="container">
+        <!-- Dashboard - Mis Cuentas -->
+        <section id="accounts" class="section">
+            <h2>Mis Cuentas</h2>
+            <div class="accounts-grid">
+                <!-- Cuenta Corriente -->
+                <div class="account-card">
+                    <div class="account-header">
+                        <h3>Cuenta Corriente</h3>
+                        <span class="account-type">Corriente</span>
+                    </div>
+                    <div class="account-balance">
+                        <p class="label">Saldo Disponible</p>
+                        <p class="amount">$5,850.00</p>
+                    </div>
+                    <div class="account-details">
+                        <p><strong>Número de Cuenta:</strong> 1234-5678-9012</p>
+                        <p><strong>CBU:</strong> 0072001234567890123456</p>
+                    </div>
+                    <button class="btn btn-secondary">Ver Movimientos</button>
+                </div>
+
+                <!-- Cuenta Ahorros -->
+                <div class="account-card">
+                    <div class="account-header">
+                        <h3>Cuenta de Ahorros</h3>
+                        <span class="account-type savings">Ahorros</span>
+                    </div>
+                    <div class="account-balance">
+                        <p class="label">Saldo Disponible</p>
+                        <p class="amount">$12,450.75</p>
+                    </div>
+                    <div class="account-details">
+                        <p><strong>Número de Cuenta:</strong> 9876-5432-1098</p>
+                        <p><strong>CBU:</strong> 0072009876543210987654</p>
+                    </div>
+                    <button class="btn btn-secondary">Ver Movimientos</button>
+                </div>
+
+                <!-- Tarjeta de Crédito -->
+                <div class="account-card">
+                    <div class="account-header">
+                        <h3>Tarjeta de Crédito</h3>
+                        <span class="account-type credit">Crédito</span>
+                    </div>
+                    <div class="account-balance">
+                        <p class="label">Límite Disponible</p>
+                        <p class="amount">$8,200.00</p>
+                    </div>
+                    <div class="account-details">
+                        <p><strong>Últimos Dígitos:</strong> **** **** **** 4521</p>
+                        <p><strong>Vencimiento:</strong> 12/2026</p>
+                    </div>
+                    <button class="btn btn-secondary">Ver Detalles</button>
+                </div>
+            </div>
+        </section>
+
+        <!-- Transferencias -->
+        <section id="transfers" class="section">
+            <h2>Realizar Transferencia</h2>
+            <div class="form-container">
+                <form class="transfer-form">
+                    <div class="form-group">
+                        <label for="from-account">Desde:</label>
+                        <select id="from-account" required>
+                            <option value="">Selecciona una cuenta</option>
+                            <option value="corriente">Cuenta Corriente - $5,850.00</option>
+                            <option value="ahorros">Cuenta de Ahorros - $12,450.75</option>
+                        </select>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="recipient">Beneficiario:</label>
+                        <input type="text" id="recipient" placeholder="Nombre del beneficiario" required>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="account-number">Número de Cuenta/CBU:</label>
+                        <input type="text" id="account-number" placeholder="Ingresa el número de cuenta o CBU" required>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="amount">Monto:</label>
+                        <input type="number" id="amount" placeholder="0.00" min="0" step="0.01" required>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="concept">Concepto:</label>
+                        <textarea id="concept" placeholder="Motivo de la transferencia" rows="3"></textarea>
+                    </div>
+
+                    <button type="submit" class="btn btn-primary">Enviar Transferencia</button>
+                    <button type="reset" class="btn btn-secondary">Limpiar</button>
+                </form>
+            </div>
+        </section>
+
+        <!-- Historial de Transacciones -->
+        <section id="history" class="section">
+            <h2>Historial de Transacciones</h2>
+            <div class="table-responsive">
+                <table class="transaction-table">
+                    <thead>
+                        <tr>
+                            <th>Fecha</th>
+                            <th>Concepto</th>
+                            <th>Tipo</th>
+                            <th>Monto</th>
+                            <th>Saldo</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr class="transaction-debit">
+                            <td>09/02/2026 14:35</td>
+                            <td>Transferencia a Carlos López</td>
+                            <td><span class="badge badge-debit">Débito</span></td>
+                            <td>-$500.00</td>
+                            <td>$5,850.00</td>
+                        </tr>
+                        <tr class="transaction-credit">
+                            <td>08/02/2026 10:15</td>
+                            <td>Depósito de nómina</td>
+                            <td><span class="badge badge-credit">Crédito</span></td>
+                            <td>+$3,200.00</td>
+                            <td>$6,350.00</td>
+                        </tr>
+                        <tr class="transaction-debit">
+                            <td>07/02/2026 18:42</td>
+                            <td>Compra en Amazon</td>
+                            <td><span class="badge badge-debit">Débito</span></td>
+                            <td>-$125.50</td>
+                            <td>$3,150.00</td>
+                        </tr>
+                        <tr class="transaction-credit">
+                            <td>06/02/2026 09:20</td>
+                            <td>Transferencia de María García</td>
+                            <td><span class="badge badge-credit">Crédito</span></td>
+                            <td>+$1,000.00</td>
+                            <td>$3,275.50</td>
+                        </tr>
+                        <tr class="transaction-debit">
+                            <td>05/02/2026 16:08</td>
+                            <td>Pago de servicios</td>
+                            <td><span class="badge badge-debit">Débito</span></td>
+                            <td>-$250.00</td>
+                            <td>$2,275.50</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </section>
+
+        <!-- Perfil -->
+        <section id="profile" class="section">
+            <h2>Mi Perfil</h2>
+            <div class="profile-container">
+                <div class="profile-info">
+                    <div class="profile-header">
+                        <div class="profile-avatar">JP</div>
+                        <div class="profile-details">
+                            <h3>Juan Pérez García</h3>
+                            <p class="profile-email">juan.perez@email.com</p>
+                        </div>
+                    </div>
+
+                    <div class="profile-data">
+                        <div class="data-group">
+                            <h4>Información Personal</h4>
+                            <p><strong>DNI:</strong> 12.345.678</p>
+                            <p><strong>Teléfono:</strong> +54 9 11 2345-6789</p>
+                            <p><strong>Fecha de Nacimiento:</strong> 15/05/1990</p>
+                            <p><strong>Domicilio:</strong> Calle Principal 123, Buenos Aires</p>
+                        </div>
+
+                        <div class="data-group">
+                            <h4>Información Bancaria</h4>
+                            <p><strong>Cliente desde:</strong> 01/03/2015</p>
+                            <p><strong>Tipo de Cliente:</strong> Premium</p>
+                            <p><strong>Límite de Transferencia Diaria:</strong> $50,000.00</p>
+                        </div>
+
+                        <div class="data-group">
+                            <h4>Seguridad</h4>
+                            <button class="btn btn-secondary">Cambiar Contraseña</button>
+                            <button class="btn btn-secondary">Configurar 2FA</button>
+                            <button class="btn btn-secondary">Ver Dispositivos Autorizados</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Acciones Rápidas -->
+        <section class="section quick-actions">
+            <h2>Acciones Rápidas</h2>
+            <div class="actions-grid">
+                <div class="action-card">
+                    <span class="action-icon">📱</span>
+                    <h3>Descargar App</h3>
+                    <p>Descarga nuestra aplicación móvil</p>
+                </div>
+                <div class="action-card">
+                    <span class="action-icon">💬</span>
+                    <h3>Contactar Soporte</h3>
+                    <p>Chat en vivo 24/7</p>
+                </div>
+                <div class="action-card">
+                    <span class="action-icon">📊</span>
+                    <h3>Mi Presupuesto</h3>
+                    <p>Gestiona tus gastos</p>
+                </div>
+                <div class="action-card">
+                    <span class="action-icon">🎁</span>
+                    <h3>Promociones</h3>
+                    <p>Ofertas especiales para ti</p>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <h4>BancaMobile</h4>
+                    <p>Tu banco digital de confianza</p>
+                </div>
+                <div class="footer-section">
+                    <h4>Enlaces Rápidos</h4>
+                    <ul>
+                        <li><a href="#">Ayuda y Soporte</a></li>
+                        <li><a href="#">Términos y Condiciones</a></li>
+                        <li><a href="#">Política de Privacidad</a></li>
+                    </ul>
+                </div>
+                <div class="footer-section">
+                    <h4>Contacto</h4>
+                    <p>Email: soporte@banco.com</p>
+                    <p>Tel: +1 (555) 123-4567</p>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2026 BancaMobile. Todos los derechos reservados.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+</html>

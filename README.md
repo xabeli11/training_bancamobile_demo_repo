@@ -104,11 +104,18 @@ Las contribuciones son bienvenidas. Para cambios significativos, por favor:
 
 Este proyecto está bajo la licencia MIT. Consulta el archivo `LICENSE` para más detalles.
 
+## Pre requisitos
+- Node.js v14 o superior
+- npm v6 o superior 
+
+
 ## 📞 Soporte
 
 Para soporte o reportar problemas, crea un issue en el repositorio o contacta a través de:
 - Email: soporte@banco.com
 - Teléfono: +1 (555) 123-4567
+
+
 
 ## 📚 Recursos Adicionales
 
@@ -117,5 +124,4 @@ Para soporte o reportar problemas, crea un issue en el repositorio o contacta a 
 - [Manual de Usuario](./docs/USER_GUIDE.md)
 
 ---
-
 **Última actualización**: Febrero 2026
